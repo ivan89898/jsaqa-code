@@ -1,16 +1,31 @@
 {
   "name": "jsaqa_3_3",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "jest"
   },
-  "author": "",
+  "author": "Chizhevsky",
   "license": "ISC",
   "dependencies": {
     "jest": "^27.3.1",
     "jest-puppeteer": "^6.0.0",
-    "puppeteer": "^13.3.2"
-  }
+    "puppeteer": "^13.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.42.0",
+    "prettier": "^2.8.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivan89898/jsaqa-code.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "bugs": {
+    "url": "https://github.com/ivan89898/jsaqa-code/issues"
+  },
+  "homepage": "https://github.com/ivan89898/jsaqa-code#readme",
+  "description": ""
 }
