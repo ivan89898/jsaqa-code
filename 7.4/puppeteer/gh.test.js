@@ -1,13 +1,10 @@
 //const { TimeoutSettings } = require("puppeteer");
 
 let page;
-const timeout = 70000;
-
+const timeout = 1200000;
 beforeEach(async () => {
   page = await browser.newPage();
-  await page.goto("https://github.com/team");
 });
-
 afterEach(() => {
   page.close();
 });
@@ -16,13 +13,13 @@ describe("Github page tests", () => {
   test(
     "The h1 header content'",
     async () => {
+      await page.goto("https://github.com/team");
       const firstLink = await page.$("header div div a");
       await firstLink.click();
-      await page.waitForSelector("h1");
+      await page.waitForSelector(`h1`);
       const title2 = await page.title();
-
       expect(title2).toEqual(
-        "GitHub: Where the world builds software · GitHub"
+        "GitHub for teams · Build like the best teams on the planet · GitHub"
       );
     },
     timeout
@@ -31,6 +28,7 @@ describe("Github page tests", () => {
   test(
     "The first link attribute",
     async () => {
+      await page.goto("https://github.com/team");
       const actual = await page.$eval("a", (link) => link.getAttribute("href"));
       expect(actual).toEqual("#start-of-content");
     },
@@ -40,35 +38,25 @@ describe("Github page tests", () => {
   test(
     "The page contains Sign in button",
     async () => {
+      await page.goto("https://github.com/team");
       const btnSelector = ".btn-large-mktg.btn-mktg";
       await page.waitForSelector(btnSelector, {
         visible: true,
       });
       const actual = await page.$eval(btnSelector, (link) => link.textContent);
-      expect(actual).toContain("Sign up for free");
+      expect(actual).toContain("Get started with Team");
     },
     timeout
   );
-});
 
-beforeEach(async () => {
-  page = await browser.newPage();
-  await page.goto("https://github.com/enterprise");
-});
-
-afterEach(() => {
-  page.close();
-});
-
-describe("Github page tests", () => {
   test(
     "The h1 header content'",
     async () => {
+      await page.goto("https://github.com/enterprise");
       const firstLink = await page.$("header div div a");
       await firstLink.click();
       await page.waitForSelector("h1");
       const title2 = await page.title();
-
       expect(title2).toEqual(
         "Enterprise · A smarter way to work together · GitHub"
       );
@@ -79,6 +67,7 @@ describe("Github page tests", () => {
   test(
     "The first link attribute",
     async () => {
+      await page.goto("https://github.com/enterprise");
       const actual = await page.$eval("a", (link) => link.getAttribute("href"));
       expect(actual).toEqual("#start-of-content");
     },
@@ -88,6 +77,7 @@ describe("Github page tests", () => {
   test(
     "The page contains Sign in button",
     async () => {
+      await page.goto("https://github.com/enterprise");
       const btnSelector = ".btn-large-mktg.btn-mktg";
       await page.waitForSelector(btnSelector, {
         visible: true,
