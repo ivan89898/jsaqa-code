@@ -15,3 +15,38 @@ describe("Books names test suit", () => {
     ]);
   });
 });
+
+describe("Books names test suit", () => {
+  it("Books names should not be sorted in ascending order", () => {
+    expect(
+      sorting.sortByName([
+        "Властелин Колец",
+        "Волшебник изумрудного города",
+        "Гарри Поттер",
+      ])
+    ).toEqual([
+      "Властелин Колец",
+      "Волшебник изумрудного города",
+      "Гарри Поттер",
+    ]);
+  });
+});
+
+describe("Books names test suit", () => {
+  it("Books names should not be sorted in ascending order", () => {
+    expect(
+      sorting.sortByName([
+        "Властелин Колец",
+        "Властелин Колец",
+
+
+        
+        "Властелин Колец",
+      ])
+    ).toEqual([
+      "Властелин Колец",
+      "Властелин Колец",
+      "Властелин Колец",
+    ]);
+  });
+});
