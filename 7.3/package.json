@@ -2,5 +2,25 @@
   "devDependencies": {
     "eslint": "^8.44.0",
     "prettier": "^2.8.8"
-  }
+  },
+  "name": "7.3",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivan89898/jsaqa-code.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Chizhevsky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivan89898/jsaqa-code/issues"
+  },
+  "homepage": "https://github.com/ivan89898/jsaqa-code#readme",
+  "description": ""
 }

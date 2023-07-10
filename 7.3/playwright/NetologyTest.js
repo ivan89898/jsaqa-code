@@ -3,13 +3,10 @@ const { chromium } = require("playwright");
 (async () => {
   const browser = await chromium.launch({
     headless: false,
-    slowMo: 5000,
-    devtools: true
+    slowMo: 300,
   });
   const page = await browser.newPage();
-  await page.goto("https://netology.ru");
-  await page.click("text=Каталог курсов");
-  await page.pause();
+  await page.goto("https://netology.ru/?modal=sign_in");
 
   //assertion
   await browser.close();
