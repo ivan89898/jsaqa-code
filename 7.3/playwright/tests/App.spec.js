@@ -1,55 +1,27 @@
 const { test, expect } = require("@playwright/test");
-const { chromium } = require("playwright");
-
-(async () => {
-  const browser = await chromium.launch({
-    headless: false,
-    slowMo: 300,
-  });
-
-  //assertion
-  await browser.close();
-})();
-test("test", async ({ page }) => {
-  // Go to https://netology.ru/free/management#/
-  await page.goto("https://netology.ru/free/management#/");
-
-  // Click a
-  await page.click("a");
-  await expect(page).toHaveURL("https://netology.ru/");
-
-  // Click text=Учиться бесплатно
-  await page.click("text=Учиться бесплатно");
-  await expect(page).toHaveURL("https://netology.ru/free");
-
-  page.click("text=Бизнес и управление");
-
-  // Click text=Как перенести своё дело в онлайн
-  await page.click("text=Как перенести своё дело в онлайн");
-  await expect(page).toHaveURL(
-    "https://netology.ru/programs/kak-perenesti-svoyo-delo-v-onlajn-bp"
-  );
-});
+import { email, password } from "./user";
 
 test("Success login", async ({ page }) => {
-  // Go to https://netology.ru/free/management#/
   await page.goto("https://netology.ru/?modal=sign_in");
+  await page.screenshot({ path: "screenshot1.png", fullPage: true });
   await page.click('[placeholder="Email"]');
   await page.fill(`[placeholder="Email"]`, email);
+  await page.screenshot({ path: "screenshot2.png", fullPage: true });
   await page.click('[placeholder="Пароль"]');
   await page.fill('[placeholder="Пароль"]', password);
+  await page.screenshot({ path: "screenshot3.png", fullPage: true });
   await page.click('[data-testid="login-submit-btn"]');
   await expect(page).toHaveURL("https://netology.ru/profile");
+  await page.screenshot({ path: "screenshot4.png", fullPage: true });
 });
 
-test("wrong login", async ({ page }) => {
-  // Go to https://netology.ru/free/management#/
+test("Wrong login", async ({ page }) => {
   await page.goto("https://netology.ru/?modal=sign_in");
+  await page.screenshot({ path: "screenshot5.png", fullPage: true });
   await page.click('[placeholder="Email"]');
   await page.fill(`[placeholder="Email"]`, "email");
-  await page.click('[placeholder="Пароль"]');
-  await page.fill('[placeholder="Пароль"]', "password");
+  await page.screenshot({ path: "screenshot6.png", fullPage: true });
   await page.click('[data-testid="login-submit-btn"]');
-  await expect(getByText("Обязательное поле").first());
-  await expect(getByText("Обязательное поле").nth(1));
+  expect(`[span = "Неверный email"]`);
+  await page.screenshot({ path: "screenshot7.png", fullPage: true });
 });
