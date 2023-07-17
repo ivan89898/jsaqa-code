@@ -22,6 +22,12 @@ test("Wrong login", async ({ page }) => {
   await page.fill(`[placeholder="Email"]`, "email");
   await page.screenshot({ path: "screenshot6.png", fullPage: true });
   await page.click('[data-testid="login-submit-btn"]');
-  expect(`[span = "Неверный email"]`);
+  await page.click('[placeholder="Пароль"]');
+  await page.fill('[placeholder="Пароль"]', "password");
   await page.screenshot({ path: "screenshot7.png", fullPage: true });
+  await page.click('[data-testid="login-submit-btn"]');
+  await page.screenshot({ path: "screenshot8.png", fullPage: true });
+  expect(`[span = "Неверный email"]`);
+  await expect(page).toHaveURL("https://netology.ru/?modal=sign_in");
+  await page.screenshot({ path: "screenshot9.png", fullPage: true });
 });
