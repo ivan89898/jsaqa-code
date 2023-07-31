@@ -25,28 +25,11 @@ module.exports = {
       throw new Error(`Not possible to type text for selector: ${selector}`);
     }
   },
-  clickPlace: async function (page, selector) {
-    try {
-      (await page
-        .$x(
-          div[Math.floor(Math.random() * 10) + 1] /
-            span[Math.floor(Math.random() * 10) + 1]
-        )
-        .click()) ||
-        (await page
-          .$x(
-            div[Math.floor(Math.random() * 10) + 1] /
-              span[Math.floor(Math.random() * 10) + 1]
-          )
-          .click()) ||
-        (await page
-          .$x(
-            div[Math.floor(Math.random() * 10) + 1] /
-              span[Math.floor(Math.random() * 10) + 1]
-          )
-          .click());
-    } catch (error) {
-      throw new Error(`Selector is not clickable: ${selector}`);
-    }
+  clickPlace: async function () {
+    await page.evaluate(() => {
+      const allDivs = page.querySelectorAll(".left-sidebar-toggle");
+      const randomElement = allDivs[Math.floor(Math.random() * allDivs.length)];
+      randomElement.click();
+    });
   },
 };
