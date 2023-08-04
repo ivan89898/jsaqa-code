@@ -1,5 +1,5 @@
 {
-  "cucumberautocomplete.steps": ["./features/step_definitions/*.js"],
+  "cucumberautocomplete.steps": "./features/step_definitions/*.js",
   "cucumberautocomplete.strictGherkinCompletion": false,
   "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
   "editor.formatOnType": false, // required
